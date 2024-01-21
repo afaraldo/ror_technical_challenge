@@ -1,0 +1,42 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      - pp-db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASS}
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: bash -l -c "bundle update && foreman start"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
+    environment:
+      DATABASE_HOST: db
+      REDIS_URL: redis://cache:6379/0
+    depends_on:
+      - db
+      - cache
+
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+
+volumes:
+  pp-db:

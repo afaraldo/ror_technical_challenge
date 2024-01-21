@@ -1,0 +1,50 @@
+# Ignorar archivos de configuración que contienen información sensible
+/config/database.yml
+/config/master.key
+/config/credentials.yml.enc
+
+# Ignorar directorios específicos de Ruby/Rails
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore los archivos temporales de PID que quedan cuando tu servidor se detiene de manera inesperada
+/tmp/pids/*
+/tmp/cache/*
+/tmp/sockets/*
+
+# Ignorar archivos específicos de Bundler
+/vendor/bundle
+
+# Ignore los archivos temporales de Mac OS y Linux
+.DS_Store
+*.swp
+
+# Ignorar archivos de prueba de sistema
+/storage/*
+!/storage/.keep
+
+# Ignorar archivos que son generados por IDEs/editor de textos
+.idea/
+*.iml
+*.rbc
+.project
+*.sublime*
+
+# Ignorar archivos específicos de un entorno de desarrollo
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/assets
+
+# Ignorar otros archivos que pueden contener información sensible o son innecesarios para el repositorio
+/config/secrets.yml
+/.bundle
+/db/structure.sql
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+.env
+
+/public/system
