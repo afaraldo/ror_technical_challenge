@@ -15,7 +15,7 @@ services:
 
   web:
     build: .
-    command: bash -l -c "bundle install && foreman start"
+    command: bash -l -c "rake db:migrate && rake db:seed && foreman start"
     volumes:
       - .:/myapp
     ports:

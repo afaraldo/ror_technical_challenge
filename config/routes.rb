@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require 'sidekiq-cron'
 
 PpTechChallenge::Application.routes.draw do
   devise_for :users

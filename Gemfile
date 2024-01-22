@@ -44,14 +44,11 @@ gem 'rails-erd', group: :development
 gem 'sinatra', '~> 1.4'
 gem "connection_pool", "= 2.1.0" # https://github.com/sidekiq/sidekiq/tree/v2.17.8
 gem 'sidekiq', "= 2.17.8" # https://github.com/sidekiq/sidekiq/tree/v2.17.8
+gem 'rufus-scheduler', "= 3.1" # required for sidekiq-cron
 gem "sidekiq-cron" # https://github.com/sidekiq-cron/sidekiq-cron/tree/v0.1.6
 
 gem "paperclip"
 gem "audited-activerecord", "~> 3.0" # https://github.com/collectiveidea/audited/tree/v3.0.0
-
-# gem 'carrierwave'
-# gem "pundit"
-
 
 # gem 'ransack', '~> 1.7'
 gem 'kaminari'

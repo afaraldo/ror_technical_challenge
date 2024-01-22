@@ -1,0 +1,4 @@
+report_daily_to_admins:
+  cron: "0 9 * * *"
+  class: "ReportDailyToAdmins"
+  queue: default
