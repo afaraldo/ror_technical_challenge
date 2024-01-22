@@ -6,7 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.find_or_create_by_name('Emanuel', city: cities.first)
 
-user = User.create(email: "adrian@email.com", password: "test1234", role_cd: 1)
+user = User.create(email: "afaraldo.dev@gmail.com", password: "test1234", role_cd: 1)
+user2 = User.create(email: "afaraldo.dev+prueba1@gmail.com", password: "test1234", role_cd: 1)
+user3 = User.create(email: "afaraldo.devprueba2@gmail.com", password: "test1234", role_cd: 0)
+
 Audited.audit_class.as_user(user) do
   cellphone = Product.find_or_create_by_name("Cellphone")
   tv = Product.find_or_create_by_name("TV")

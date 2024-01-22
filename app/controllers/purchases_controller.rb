@@ -36,6 +36,8 @@ class PurchasesController < ApplicationController
 
   # GET /purchases/1/edit
   def edit
+    @clients = Client.all
+    @products = Product.all
     @purchase = Purchase.find(params[:id])
   end
 
@@ -46,7 +48,10 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save
-        ::SendEmailToAdmins.perform_async('Dave', 5)
+
+        if Purchase.where(product_id: @purchase.reload.product_id).size == 1
+          SendEmailToAdmins.perform_async(@purchase.product_id)
+        end
         format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
         format.json { render json: @purchase, status: :created, location: @purchase }
       else

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 PpTechChallenge::Application.routes.draw do
   devise_for :users
 
@@ -7,6 +9,13 @@ PpTechChallenge::Application.routes.draw do
   resources :users
   resources :categories
   resources :products
+
+  mount Sidekiq::Web => '/sidekiq' do
+    use Rack::Auth::Basic do |username, password|
+      # Reemplaza los siguientes valores con tus credenciales
+      username == 'admin' && password == 'secret'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

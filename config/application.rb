@@ -55,7 +55,7 @@ module PpTechChallenge
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.autoload_paths += %W(#{config.root}/app/models/concerns #{config.root}/app/workers)
+    config.autoload_paths += %W(#{config.root}/app/models/concerns #{config.root}/app/workers #{config.root}/lib)
 
   end
 end
