@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   # GET /purchases
   # GET /purchases.json
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.includes(:product, :client).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,16 +45,10 @@ class PurchasesController < ApplicationController
   # POST /purchases.json
   def create
     @purchase = Purchase.new(params[:purchase])
-
+    result = Purchases::Create.call(purchase: @purchase)
     respond_to do |format|
-      if @purchase.save
-
-        ActiveRecord::Base.transaction do
-          if Purchase.where(product_id: @purchase.product_id).size == 1
-            SendEmailToAdmins.perform_async(@purchase.product_id)
-          end
-        end
-
+      if result.success?
+        @purchase.reload
         format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
         format.json { render json: @purchase, status: :created, location: @purchase }
       else

@@ -11,25 +11,26 @@ user2 = User.create(email: "afaraldo.dev+prueba1@gmail.com", password: "test1234
 user3 = User.create(email: "afaraldo.devprueba2@gmail.com", password: "test1234", role_cd: 0)
 
 Audited.audit_class.as_user(User.first) do
-  # Crea productos, categorías e imágenes al azar
-  10.times do
-    category = FactoryBot.create(:category)
-    random_id = rand(Category.minimum(:id)..Category.maximum(:id))
-    random_category = Category.find_by_id(random_id)
-    image = FactoryBot.create(:image)
-
-    product = FactoryBot.create(:product)
-    product.categories << random_category
-    product.images << image
+  5.times do
+    FactoryBot.create(:category)
   end
 
-  # Crea clientes al azar
-  30.times do
-    FactoryBot.create(:client)
+  image = FactoryBot.create(:image)
+  Category.all.map do |category|
+    10.times do
+      product = FactoryBot.create(:product)
+      product.images << image
+      product.categories << category
+    end
   end
 
-  # Crea compras al azar
-  60.times do
-    FactoryBot.create(:purchase)
+  Product.all.map do |product|
+    product.categories << Category.all[rand(0..4)]
+  end
+
+  Product.all.map do |product|
+    10.times do
+      FactoryBot.create(:purchase, product: product, quantity: rand(1..10))
+    end
   end
 end

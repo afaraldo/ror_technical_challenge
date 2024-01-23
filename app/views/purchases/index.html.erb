@@ -11,8 +11,8 @@
 
 <% @purchases.each do |purchase| %>
   <tr>
-    <td><%= purchase.client %></td>
-    <td><%= purchase.product %></td>
+    <td><%= purchase.client_name %></td>
+    <td><%= purchase.product_name %></td>
     <td><%= link_to 'Show', purchase %></td>
     <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
     <td><%= link_to 'Destroy', purchase, confirm: 'Are you sure?', method: :delete %></td>

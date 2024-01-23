@@ -36,6 +36,8 @@ class Purchase < ActiveRecord::Base
   belongs_to :client
   belongs_to :product
 
-
   validates :product, :client, :quantity, :unit_price, :total, presence: true
+
+  delegate :name, to: :product, prefix: true
+  delegate :name, to: :client, prefix: true
 end

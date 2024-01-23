@@ -1,0 +1,14 @@
+# En .rubocop.yml
+
+# Para excluir archivos o carpetas globalmente
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'db/**/*'
+
+# Para excluir archivos o carpetas de una regla específica

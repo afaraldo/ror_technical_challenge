@@ -85,7 +85,24 @@ curl -X POST 'http://localhost:3000/api/v1/users/login' \
     -H 'Content-Type: application/json' \
     -d '{ "email":"afaraldo.dev@gmail.com", "password": "test1234"}'
 
+* GET http://localhost:3000/api/v1/products/best_sellers
+curl -X GET 'http://localhost:3000/api/v1/products/best_sellers' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDYwODM1NDF9.7qJuCDUxy3SZL_LBRgNWIwJ39eUGHokrAYTrwNJoij8'
 
+* GET http://localhost:3000/api/v1/products/more_profit
+curl -X GET 'http://localhost:3000/api/v1/products/more_profit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDYwODM1NDF9.7qJuCDUxy3SZL_LBRgNWIwJ39eUGHokrAYTrwNJoij8'
 
+* GET http://localhost:3000/api/v1/products/
+curl -X 'GET' 'http://localhost:3000/api/v1/products?from=2023-01-01&to=2023-01-23&category_id=1&admin_id=1' \
+    -H 'accept: application/json' \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDYwODM1NDF9.7qJuCDUxy3SZL_LBRgNWIwJ39eUGHokrAYTrwNJoij8'
 
-
+* GET http://localhost:3000/api/v1/products/summary
+curl -X 'GET' 'http://localhost:3000/api/v1/products/summary?from=2023-01-01&to=2023-01-23&category_id=1&granularity=daily' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDYwODM1NDF9.7qJuCDUxy3SZL_LBRgNWIwJ39eUGHokrAYTrwNJoij8'
