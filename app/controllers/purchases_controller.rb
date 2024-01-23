@@ -49,9 +49,12 @@ class PurchasesController < ApplicationController
     respond_to do |format|
       if @purchase.save
 
-        if Purchase.where(product_id: @purchase.reload.product_id).size == 1
-          SendEmailToAdmins.perform_async(@purchase.product_id)
+        ActiveRecord::Base.transaction do
+          if Purchase.where(product_id: @purchase.product_id).size == 1
+            SendEmailToAdmins.perform_async(@purchase.product_id)
+          end
         end
+
         format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
         format.json { render json: @purchase, status: :created, location: @purchase }
       else

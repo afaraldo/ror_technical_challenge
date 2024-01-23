@@ -8,6 +8,7 @@ module React
     helpers do
       def current_user
         token = headers['Authorization']
+
         return nil if token.nil?
 
         payload = JwtService.decode(token.gsub!('Bearer ', ''))
@@ -39,25 +40,19 @@ module React
 
         if user && user.valid_password?(params[:password]) && user.admin?
           token = JwtService.encode({ user_id: user.id })
-          { token: token }.to_json
+          { token: token }
         else
           error!('Login invalid', 401)
         end
       end
     end
 
+
     resource :products do
       before do
         authenticate!
       end
-      desc 'Return products.', {
-        headers: {
-          "Authorization" => {
-            "description" => "Valdates your identity",
-            "required" => true
-          }
-        }
-      }
+
 
       get "/best_sellers" do
         most_sold_products_per_category = Product
@@ -126,11 +121,10 @@ module React
         optional :category_id, type: Integer
         optional :client_id, type: Integer
         optional :admin_id, type: Integer
-        requires :granularity, type: String, values: %w[hour day week year]
+        requires :granularity, type: String, values: %w[hour daily week year]
       end
       get "/summary" do
         declared_params = declared(params)
-
         query = Purchase.scoped
 
         if declared_params[:from] && declared_params[:to]
@@ -146,11 +140,12 @@ module React
         select_clause = "COUNT(*) as purchase_count"
         group_clause = ""
 
+
         if declared_params[:granularity]
           case declared_params[:granularity]
           when 'hour'
             group_clause = "to_char(purchases.created_at, 'YYYY-MM-DD HH24:00')"
-          when 'day'
+          when 'daily'
             group_clause = "to_char(purchases.created_at, 'YYYY-MM-DD')"
           when 'week'
             group_clause = "to_char(purchases.created_at, 'IYYY-IW')"

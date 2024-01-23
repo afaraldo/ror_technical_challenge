@@ -54,14 +54,16 @@ gem 'ransack', '~> 1.3.0'
 gem 'kaminari'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.9.1'
+  gem 'rspec-rails', ' 3.9.1'
+  gem "factory_bot_rails"
+  gem 'faker', "= 1.4.3"
 end
 
 group :development do
   gem 'annotate'
+  #gem 'bullet'
 end
 
-#gem 'bullet', group: 'development'
 gem 'grape', "= 0.16.2"
 gem 'grape-swagger', "= 0.20.3"
 gem "devise" # https://github.com/heartcombo/devise/tree/v2.2

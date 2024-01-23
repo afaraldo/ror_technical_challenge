@@ -1,12 +1,83 @@
-# Para levantar el proyecto
+# E-Commerce Backend Demonstration - Ruby on Rails
+
+This Ruby on Rails project serves as a technical demonstration, showcasing an array of backend concepts essential for modern e-commerce platforms. It's designed as a technical challenge to exhibit the implementation and integration of various functionalities in an e-commerce context.
+
+## Core Features
+
+- **Product and Category Management**: Efficient handling of products and their categories, with support for multiple image associations.
+- **Purchase Tracking**: Robust system to link purchases with specific products and customers.
+- **Administrator Management**: Comprehensive oversight by admin users with detailed action tracking.
+- **Transactional Email Sending**: Automated email notifications to administrators for first product purchases.
+- **Image Storage Solutions**: Advanced methods for storing and retrieving product images.
+- **API Integration with Third-Parties**: Seamless integration with external APIs for extended capabilities.
+- **Automated Daily Reporting (Cron Jobs)**: Scheduled tasks for generating and sending daily sales reports.
+- **Custom E-commerce Business Logic**: Tailored business logic design and implementation specific to e-commerce needs.
+- **REST API Development**: JWT-authenticated REST APIs for administrative and data retrieval purposes.
+
+## Technical Aspects
+
+- **Development Environment**: Developed with Ruby 1.9.3 and Rails 3.
+- **Database Management**: Utilizes Postgresql for robust data handling.
+- **Rigorous Testing**: Ensures reliability and performance through Rspec testing.
+- **Efficient Background Processing**: Employs Sidekiq for handling time-consuming tasks in the background.
+- **Optimized for Performance and Security**: Adheres to high-performance SQL standards, Rails security practices, and industry best practices, including CI/CD and linting.
+
+## Advanced Features
+
+- Implements advanced model associations like many-to-many, polymorphism, and inheritance.
+- Features optional caching mechanisms for APIs.
+- Tracks modifications by admin users within the model logic.
+- Supports OpenAPI/Swagger for comprehensive API documentation.
+
+As a technical test, this project not only demonstrates the application of various backend technologies and practices but also highlights efficient, secure, and scalable solutions for e-commerce management challenges.
+# E-Commerce Backend Demonstration - Ruby on Rails
+
+This Ruby on Rails project serves as a technical demonstration, showcasing an array of backend concepts essential for modern e-commerce platforms. It's designed as a technical challenge to exhibit the implementation and integration of various functionalities in an e-commerce context. The application has been dockerized for ease of setup and deployment, using Docker and Docker Compose. Key implementations include the use of Rails concerns for modular and reusable code, and a custom JWT authentication system.
+
+## Core Features
+
+- **Product and Category Management**: Efficient handling of products and their categories, with support for multiple image associations.
+- **Purchase Tracking**: Robust system to link purchases with specific products and customers.
+- **Administrator Management**: Comprehensive oversight by admin users with detailed action tracking.
+- **Transactional Email Sending**: Automated email notifications to administrators for first product purchases.
+- **Image Storage Solutions**: Advanced methods for storing and retrieving product images.
+- **API Integration with Third-Parties**: Seamless integration with external APIs for extended capabilities.
+- **Automated Daily Reporting (Cron Jobs)**: Scheduled tasks for generating and sending daily sales reports.
+- **Custom E-commerce Business Logic**: Tailored business logic design and implementation specific to e-commerce needs.
+- **REST API Development**: JWT-authenticated REST APIs for administrative and data retrieval purposes.
+
+## Technical Aspects
+
+- **Development Environment**: Developed with Ruby 1.9.3 and Rails 3.
+- **Database Management**: Utilizes Postgresql for robust data handling.
+- **Rigorous Testing**: Ensures reliability and performance through Rspec testing.
+- **Efficient Background Processing**: Employs Sidekiq for handling time-consuming tasks in the background.
+- **Optimized for Performance and Security**: Adheres to high-performance SQL standards, Rails security practices, and industry best practices, including CI/CD and linting.
+- **Use of Concerns**: Implements Rails concerns for clean, modular, and maintainable code.
+- **Custom JWT Authentication**: Features a bespoke JWT authentication system for enhanced security and flexibility.
+
+## Advanced Features
+
+- Implements advanced model associations like many-to-many, polymorphism, and inheritance.
+- Features optional caching mechanisms for APIs.
+- Tracks modifications by admin users within the model logic.
+- Supports OpenAPI/Swagger for comprehensive API documentation.
+
+# To Launch the Project
+
+The application is dockerized, making it straightforward to set up and run:
+
+1. Launch the project using Docker Compose:
 
 docker compose up
 
-Visitar http:localhost:3000
+2. Once running, visit the application at:
 
-## Pruebas Manuales
+## Manual Testing
 
-Visitar Docs Api Swagger: http://localhost:8080/
+To ensure the application's functionality and performance, manual testing can be performed following the setup. This includes verifying the proper operation of the REST APIs, checking the database interactions, and testing the user interface for product and category management.
+
+As a technical test, this project not only demonstrates the application of various backend technologies and practices but also highlights efficient, secure, and scalable solutions for e-commerce management challenges.
 
 * Login
 curl -X POST 'http://localhost:3000/api/v1/users/login' \
@@ -14,21 +85,7 @@ curl -X POST 'http://localhost:3000/api/v1/users/login' \
     -H 'Content-Type: application/json' \
     -d '{ "email":"afaraldo.dev@gmail.com", "password": "test1234"}'
 
-Logros alcanzados
-1. Se alcanzó todos los requisitos funcionales.
-2. Documentación Swagger
-3. Comentarios en el codigo, Uso de concerns.
-4. Relaciones usadas belongs_to, has_many, has_and_belongs_to_many
-5. Integración con Sendgrid para el envió de email.
-6. Envió de emails se encolá en sidekiq.
-7. Cron Tasks realizado.
-8. Authenticación con jwt.
-9. Montaje en docker-compose swagger, redis, rails y postgres.
-10. 10. Deseables pero no requeridos:
-    b. Lógica de modelos implementada que permita tener registro de qué
-    usuario Administrado hizo algún cambio. (Con Audit gem)
-    c. Diagrama de entidad relación de los modelos. (Con erd gem)
-    d. Documentación de APIs con openapi/swagger. (Con grape-swagger)
+
 
 
 
