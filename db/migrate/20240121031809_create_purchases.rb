@@ -3,6 +3,9 @@ class CreatePurchases < ActiveRecord::Migration
     create_table :purchases do |t|
       t.references :client
       t.references :product
+      t.integer :quantity
+      t.integer :unit_price
+      t.integer :total
 
       t.timestamps
     end

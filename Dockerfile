@@ -8,7 +8,7 @@ ENV TZ=America/Santiago
 # Instalar dependencias necesarias para RVM y Ruby
 RUN apt-get update && \
     apt-get install -y curl gpg software-properties-common build-essential  ruby-dev libssl-dev cmake autoconf bison libssl-dev nodejs shared-mime-info \
-                       libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev libpq-dev imagemagick
+                       libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev libpq-dev imagemagick graphviz
 
 # Importar la llave GPG de RVM
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -

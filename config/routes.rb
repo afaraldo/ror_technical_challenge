@@ -18,6 +18,12 @@ PpTechChallenge::Application.routes.draw do
     end
   end
 
+  mount React::API => '/'
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

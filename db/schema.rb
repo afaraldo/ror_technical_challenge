@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20240121054210) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
+    t.integer  "price"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -80,6 +81,9 @@ ActiveRecord::Schema.define(:version => 20240121054210) do
   create_table "purchases", :force => true do |t|
     t.integer  "client_id"
     t.integer  "product_id"
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.integer  "total"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

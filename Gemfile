@@ -50,7 +50,7 @@ gem "sidekiq-cron" # https://github.com/sidekiq-cron/sidekiq-cron/tree/v0.1.6
 gem "paperclip"
 gem "audited-activerecord", "~> 3.0" # https://github.com/collectiveidea/audited/tree/v3.0.0
 
-# gem 'ransack', '~> 1.7'
+gem 'ransack', '~> 1.3.0'
 gem 'kaminari'
 
 group :development, :test do
@@ -62,12 +62,16 @@ group :development do
 end
 
 #gem 'bullet', group: 'development'
-# gem 'grape'
-# gem 'grape-swagger'
+gem 'grape', "= 0.16.2"
+gem 'grape-swagger', "= 0.20.3"
 gem "devise" # https://github.com/heartcombo/devise/tree/v2.2
+gem 'jwt'
+
 gem "interactor-rails"
 gem 'simple_enum' # https://github.com/lwe/simple_enum/tree/v1.6.9
 gem "debugger"
+gem 'rack-cors', require: 'rack/cors'
+
 
 
 

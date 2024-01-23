@@ -11,9 +11,20 @@ user2 = User.create(email: "afaraldo.dev+prueba1@gmail.com", password: "test1234
 user3 = User.create(email: "afaraldo.devprueba2@gmail.com", password: "test1234", role_cd: 0)
 
 Audited.audit_class.as_user(user) do
-  cellphone = Product.find_or_create_by_name("Cellphone")
-  tv = Product.find_or_create_by_name("TV")
-  computer = Product.find_or_create_by_name("Computer")
+  cellphone = Product.new
+  cellphone.name = "Cellphone"
+  cellphone.price = 10_000
+  cellphone.save
+
+  tv = Product.new
+  tv.name = "TV"
+  tv.price = 15_000
+  tv.save
+
+  computer = Product.new
+  computer.name = "Computer"
+  computer.price = 30_000
+  computer.save
 
   entertainment = Category.find_or_create_by_name("Entertainment")
   electronics = Category.find_or_create_by_name("Electronics")
@@ -52,9 +63,14 @@ Audited.audit_class.as_user(user) do
   tv.images << [image2]
   computer.images << [image3, image5]
 
-  client = Client.create(name: "Adrian Aguero")
-  Purchase.create(client: client, product: tv)
+  10.times do |number|
+    Client.create(name: "Adrian Aguero #{number}")
+  end
+
+  Purchase.create(client: Client.first, product: tv, quantity: 5, unit_price: tv.price, total: 5 * tv.price)
+  Purchase.create(client: Client.all[3], product: tv, quantity: 10, unit_price: tv.price, total: 10 * tv.price)
+  Purchase.create(client: Client.all[1], product: cellphone, quantity: 20, unit_price: cellphone.price, total: 20 * cellphone.price)
+  Purchase.create(client: Client.all[4], product: cellphone, quantity: 3, unit_price: cellphone.price, total: 3 * cellphone.price)
+  Purchase.create(client: Client.all[2], product: computer, quantity: 5, unit_price: computer.price, total: 5 * computer.price)
+  Purchase.create(client: Client.all[5], product: computer, quantity: 5, unit_price: computer.price, total: 5 * computer.price)
 end
-
-
-

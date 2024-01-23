@@ -12,6 +12,18 @@
 #
 
 class Image < ActiveRecord::Base
+  # Constants
+  # Enums
+  # Associations (belongs_to, has_one, has_many, has_and_belongs_to_many)
+  # Extensions (includes Rails concerns)
+  # Scopes
+  # Validations
+  # Callbacks (before_save, after_commit, etc.)
+  # Delegations
+  # Virtual attributes (attr_accessor, etc.)
+  # Class methods (self.method)
+  # Instance methods
+  # Private methods
   include ::CreatedBy
   has_attached_file :file
   validates_attachment_content_type :file, content_type: /\Aimage\/.*\z/

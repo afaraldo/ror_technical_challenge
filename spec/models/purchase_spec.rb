@@ -5,6 +5,9 @@
 #  id         :integer          not null, primary key
 #  client_id  :integer
 #  product_id :integer
+#  quantity   :integer
+#  unit_price :integer
+#  total      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
